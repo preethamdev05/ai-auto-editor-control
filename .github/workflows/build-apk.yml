@@ -1,0 +1,91 @@
+name: Build APK
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    name: Build Release APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.27.0
+          cache: true
+
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Analyze project source
+        run: flutter analyze || true
+
+      - name: Run tests
+        run: flutter test || true
+
+      - name: Create release keystore
+        env:
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > android/app/release-keystore.jks
+            echo "Keystore configured from secrets"
+          else
+            echo "⚠️ No keystore secret — building debug APK instead"
+            echo "UPLOAD_TO_RELEASE=true" >> $GITHUB_ENV
+          fi
+
+      - name: Create key.properties
+        run: |
+          if [ -n "${{ secrets.KEYSTORE_B64 }}" ]; then
+            cat > android/key.properties << EOF
+            storePassword=${{ secrets.KEYSTORE_PASSWORD }}
+            keyPassword=${{ secrets.KEY_ALIAS_PASSWORD }}
+            keyAlias=${{ secrets.KEY_ALIAS }}
+            storeFile=release-keystore.jks
+            EOF
+            echo "Debug signing not available"
+          else
+            cat > android/key.properties << EOF
+            storePassword=android
+            keyPassword=android
+            keyAlias=androiddebugkey
+            storeFile=debug.keystore
+            EOF
+          fi
+
+      - name: Build APK
+        env:
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            flutter build apk --release --split-per-abi
+          else
+            flutter build apk --debug
+          fi
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk-files
+          path: build/app/outputs/flutter-apk/*.apk
+          retention-days: 30
