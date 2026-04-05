@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
-import '../../core/theme.dart';
-import '../../core/router.dart';
-import '../../data/repositories/api_repository.dart';
-import '../../domain/enums/connection_status.dart';
+import '../../../core/theme.dart';
+import '../../../core/router.dart';
+import '../../../data/repositories/api_repository.dart';
+import '../../../domain/enums/connection_status.dart';
 
 class ConnectionScreen extends ConsumerStatefulWidget {
   const ConnectionScreen({super.key});

@@ -5,7 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import '../../domain/models/job.dart';
 import '../../domain/models/config.dart';
 import '../../core/constants.dart';
-import 'storage_service.dart';
+import '../local/storage_service.dart';
 
 class ApiService {
   String _baseUrl;

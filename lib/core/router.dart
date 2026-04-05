@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../main_nav_screen.dart';
-import '../features/connection/screens/connection_screen.dart';
-import '../features/live_processing/screens/job_detail_screen.dart';
-import '../features/output/screens/output_screen.dart';
-import '../features/monitoring/screens/monitoring_screen.dart';
-import '../features/history/screens/history_screen.dart';
-import '../features/settings/screens/help_screen.dart';
-import '../features/settings/screens/config_screen.dart';
+import './main_nav_screen.dart';
+import './features/connection/screens/connection_screen.dart';
+import './features/live_processing/screens/job_detail_screen.dart';
+import './features/output/screens/output_screen.dart';
+import './features/monitoring/screens/monitoring_screen.dart';
+import './features/history/screens/history_screen.dart';
+import './features/settings/screens/help_screen.dart';
+import './features/settings/screens/config_screen.dart';
 
 class Routes {
   static const String splash = '/splash';

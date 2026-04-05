@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme.dart';
-import '../../../core/router.dart';
-import '../../../data/repositories/api_repository.dart';
-import '../../../domain/enums/connection_status.dart';
-import '../../dashboard/screens/dashboard_screen.dart';
-import '../../jobs/screens/jobs_screen.dart';
-import '../../upload/screens/upload_screen.dart';
-import '../../monitoring/screens/monitoring_screen.dart';
-import '../../settings/screens/main_settings_screen.dart';
+import '../core/theme.dart';
+import '../core/router.dart';
+import '../data/repositories/api_repository.dart';
+import '../domain/enums/connection_status.dart';
+import '../dashboard/screens/dashboard_screen.dart';
+import '../jobs/screens/jobs_screen.dart';
+import '../upload/screens/upload_screen.dart';
+import '../monitoring/screens/monitoring_screen.dart';
+import '../settings/screens/main_settings_screen.dart';
 
 class MainNavigationScreen extends ConsumerStatefulWidget {
   const MainNavigationScreen({super.key});

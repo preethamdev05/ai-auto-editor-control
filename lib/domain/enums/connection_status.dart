@@ -1,11 +1,19 @@
 enum ConnectionStatus {
-  disconnected('Disconnected', 'Tap to connect'),
-  connecting('Connecting...', 'Checking backend health'),
-  connected('Connected', 'Backend ready'),
-  error('Connection Error', 'Unable to reach backend');
+  connected,
+  connecting,
+  error,
+  disconnected;
 
-  final String label;
-  final String subtitle;
-
-  const ConnectionStatus(this.label, this.subtitle);
+  String get label {
+    switch (this) {
+      case ConnectionStatus.connected:
+        return 'Connected';
+      case ConnectionStatus.connecting:
+        return 'Connecting...';
+      case ConnectionStatus.error:
+        return 'Connection Error';
+      case ConnectionStatus.disconnected:
+        return 'Disconnected';
+    }
+  }
 }

@@ -223,7 +223,7 @@ class _JobDetailScreenState extends ConsumerState<JobDetailScreen> {
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: AppTheme.error.withOpacity(0.3)),
                   ),
-                  child: Text(job.error!, style: const TextStyle(color: AppTheme.error, fontSize: 13)),
+                  child: Text(job.error!, style: TextStyle(color: AppTheme.error, fontSize: 13)),
                 ),
               ),
             if (job.status == OverallJobStatus.complete)

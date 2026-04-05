@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/models/job.dart';
 import '../../domain/models/monitoring_report.dart';
+import '../../domain/enums/job_status.dart';
 import '../repositories/api_repository.dart';
 
 /// Monitoring repository — provides supervisor-style reports
@@ -155,8 +156,8 @@ class MonitoringPhaseReport {
             ? MonitoringReport(
                 status: MonitoringStatus.warn,
                 qualityScore: 0.0,
-                issues: [],
-                recommendations: [],
+                issues: const [],
+                recommendations: const [],
                 summary: summary,
               )
             : null,

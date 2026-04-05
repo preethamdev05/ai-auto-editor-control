@@ -17,7 +17,7 @@ class HelpScreen extends StatelessWidget {
                 SizedBox(height: 16),
                 Text('AI Auto Editor Control', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700)),
                 SizedBox(height: 4),
-                Text('v0.1.0', style: TextStyle(color: Color(0xFF9595B0)), TextSpan()),
+                Text('v0.1.0', style: TextStyle(color: Color(0xFF9595B0))),
               ],
             ),
           ),
