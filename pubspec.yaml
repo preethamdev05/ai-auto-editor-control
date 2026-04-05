@@ -1,0 +1,54 @@
+name: ai_auto_editor_control
+description: "AI Auto Editor Control — Mobile control panel for local AI video editor backend."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.2.2
+  web_socket_channel: ^3.0.1
+  file_picker: ^8.1.2
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  shared_preferences: ^2.3.3
+  path_provider: ^2.1.4
+  video_player: ^2.9.2
+  open_file: ^3.5.9
+  intl: ^0.19.0
+  google_fonts: ^6.2.1
+  path: ^1.9.0
+  uuid: ^4.5.1
+  flutter_markdown: ^0.7.4+2
+  cached_network_image: ^3.4.0
+  flutter_svg: ^2.0.11
+  shimmer: ^3.0.0
+  collection: ^1.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  riverpod_generator: ^2.6.2
+  build_runner: ^2.4.13
+  custom_lint: ^0.7.0
+  riverpod_lint: ^2.6.2
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
